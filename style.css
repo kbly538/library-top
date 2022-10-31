@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    font-size: 32px;
+}
+
+button {
+    background-color: #CFB997;
+}
+
+.form-wrapper {
+    margin: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(3px);
+}
+
+form {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    background-color: wheat;
+}
+
+
+.inactive{
+    display: none;
+    color: green
+}
+
+.active {
+    color: red;
+    font-size: 36px;
+}
+
+
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 3fr 1fr;
+}
+
+.brand {
+    padding: 30px 10px 10px 10px;
+    font-size: 92px;
+    margin-left: -45px;
+    margin-top: 40px;
+}
+
+.stats {
+    padding: 30px 10px 10px 10px;
+}
+
+.book-grid {
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 10px;
+    background-color: #9BA17B;
+}
+
+.header {
+    background-color: #61764B;
+    color: #FAD6A5;
+}
+
+.read {
+    background-color: #61764B;
+    color: #e0caa9
+}
+
+.not-read {
+    background-color: rgb(109, 78, 78);
+    color: #d9c3a2
+}
+
+.book-card {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 300px;
+    height: 250px;
+    padding: 10px 10px 0 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: left;
+    gap: 10px;
+    background-color: #fde8ca;
+    
+}
+
+.book-card p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.add-new-book-buttn {
+    margin: 40px;
+    padding: 5px 2rem 5px 2rem;
+}
