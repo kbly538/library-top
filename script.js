@@ -285,9 +285,7 @@ function initializeLibrary() {
     libraryImpl = new Library();
 
     // SEED LIBRARY
-    addBook(libraryImpl, "İçimizdeki Şeytan", "Sabahattin Ali", 6516541654456456654, true);
-    addBook(libraryImpl, "Frankeinstein", "Mary Shelley", 321, true);
-    addBook(libraryImpl, "Meditations", "Rene Descartes", 567);
+    // ............
 
     // Get container div
     container = document.querySelector(".container");
