@@ -13,22 +13,30 @@ button {
     width: 100vw;
     height: 100vh;
     display: none;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(3px);
+    
 }
 
 form {
     border: 2px solid black;
     border-radius: 10px;
-    padding: 10px;
+    padding: 30px;
     width: fit-content;
     height: fit-content;
     display: flex;
-    gap: 20px;
     flex-direction: column;
-    background-color: wheat;
+    gap: 20px;
+    background-color: #9BA17B;
+    align-items: center;
+    transform: translateX(-100px);
+
+}
+
+form button {
+    width: 400px;
 }
 
 
@@ -64,6 +72,7 @@ form {
     padding: 50px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
     gap: 10px;
     background-color: #9BA17B;
 }
@@ -104,7 +113,18 @@ form {
     text-overflow: ellipsis;
 }
 
-.add-new-book-buttn {
+.add-new-book-button {
     margin: 40px;
     padding: 5px 2rem 5px 2rem;
 }
+
+
+button {
+    border-radius: 5px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+}
+

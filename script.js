@@ -28,12 +28,12 @@ function Library() {
 let bookGrid;
 let container;
 let bookForm;
-let newBookButton;
 let formWrapper;
 let libraryImpl;
 let errMessage;
-let brand = document.querySelector(".brand")
-let stats = document.querySelector(".stats")
+const brand = document.querySelector(".brand")
+const stats = document.querySelector(".stats")
+const newBookButton = document.querySelector(".add-new-book-button")
 
 
 
@@ -59,13 +59,15 @@ function addBook(library, title, author, pages, isRead = false) {
 
 function updateUI() {
 
-
-    console.log(bookGrid.innerHTML = "")
-
+    clearBookGrid();
     for (let book of libraryImpl.books){
         createBookCard(book)
     }
 
+}
+
+function clearBookGrid(){
+    bookGrid.innerHTML = ""
 }
 
 // CREATE BOOK CARD
@@ -99,9 +101,7 @@ function createBookCard(book) {
     removeButton.addEventListener("click", (e)=> {
         const selectedBook = libraryImpl.books.filter(b => {
             if (b.bookId == e.target.dataset.bookId) return b;
-        })[0]
-        console.log(selectedBook)
-        console.log("indexi = ", libraryImpl.books.indexOf(selectedBook)    )
+        })[0];
         libraryImpl.books.splice(libraryImpl.books.indexOf(selectedBook),1);
         updateUI()
     })
@@ -119,7 +119,7 @@ function createBookCard(book) {
     bookCard.appendChild(numberOfPages);
     bookCard.appendChild(readingStatus);
     bookCard.appendChild(removeButton)
-    console.log(bookCard)
+
     bookCard.dataset.bookIndex = libraryImpl.books.indexOf(book);
     bookGrid.appendChild(bookCard);
 }
@@ -154,7 +154,7 @@ function getUserInput(e) {
     const title = titleInput.value;
     const author = authorInput.value;
     const pages = pagesInput.value;
-    const read = readingStatusInput.checked;
+    const read = readingStatusInput.classList.contains("read");
 
     errMessage.classList.remove("active");
     errMessage.classList.add("inactive");
@@ -172,8 +172,10 @@ function getUserInput(e) {
 function cancelForm(e){
     bookForm.reset();
     formWrapper.style.display = ""
-    errMessage.classList.remove("active");
-    errMessage.classList.add("inactive");
+    if(errMessage !== undefined){
+        errMessage.classList.remove("active");
+        errMessage.classList.add("inactive");
+    }
 }
 
 // CREATE FORM
@@ -227,12 +229,26 @@ function createPagesInput() {
 function createReadingStatusInput() {
     const readingStatusLabel = document.createElement("label");
     readingStatusLabel.htmlFor = "reading-status-input";
-    readingStatusLabel.textContent = "Read it?"
-    const readingStatusInput = document.createElement("input");
-    readingStatusInput.id = "reading-status-input"
-    readingStatusInput.type = "checkbox"
+    const readingStatusButton = document.createElement("button");
+    readingStatusButton.id = "reading-status-input"
+    readingStatusButton.type = "button"
+    readingStatusButton.textContent = "Read it?"
+    readingStatusButton.addEventListener("click", function(){
 
-    readingStatusLabel.appendChild(readingStatusInput);
+        if (readingStatusButton.classList.contains("not-read")){
+            readingStatusButton.classList.remove("not-read");
+            readingStatusButton.classList.add("read");
+            readingStatusButton.textContent = "Read";
+        } else {
+            readingStatusButton.classList.remove("read");
+            readingStatusButton.classList.add("not-read");
+            readingStatusButton.textContent = "Not read";
+
+        }
+    })
+
+
+    readingStatusLabel.appendChild(readingStatusButton);
 
     return readingStatusLabel;
 }
@@ -269,7 +285,7 @@ function createBookForm(action) {
     form.appendChild(cancelButton);
 
     const errMessage = document.createElement("p");
-    errMessage.textContent = "Error."
+    errMessage.textContent = "All fields are required."
     errMessage.classList.add("error-message", "inactive")
     form.appendChild(errMessage);
     
@@ -302,17 +318,14 @@ function initializeLibrary() {
     // Get book grid
     bookGrid = document.querySelector(".book-grid");
 
-    // Get new book button
-    newBookButton = document.querySelector("new-book-btn")
+    // Setup new book button
+    newBookButton.addEventListener("click", ()=>{
+        formWrapper.style.display = "flex";
+    })
 
     updateUI();
 
 }
 
 initializeLibrary();
-
-const b = document.querySelector(".add-new-book-buttn")
-b.addEventListener("click", ()=>{
-    formWrapper.style.display = "flex";
-})
 
