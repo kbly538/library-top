@@ -46,7 +46,7 @@ form button {
 }
 
 .active {
-    color: red;
+    color: rgb(178, 94, 94);
     font-size: 36px;
 }
 
