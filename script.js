@@ -14,6 +14,9 @@ class Book {
 }
 class Library {
 
+    // GODLIKE LIBRARY CLASS. Why?
+    // Quick refactorization of traditional function oriented program 
+    // into newly acquired class syntax as part of a practice assignment in The Odin Project
 
     constructor() {
         this.books = [];
